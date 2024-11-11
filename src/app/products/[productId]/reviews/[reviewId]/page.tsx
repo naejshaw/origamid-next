@@ -9,6 +9,9 @@ interface ReviewParams{
 
 export default function Review({params}:ReviewParams){
     if(parseInt(params.reviewId) > 1000) notFound()
+        
+    if(parseInt(params.reviewId) === 900) throw Error('Invalid Id: 900')
+    
     return (
         <div>
             <h1>Review do Produto {params.productId}</h1>
