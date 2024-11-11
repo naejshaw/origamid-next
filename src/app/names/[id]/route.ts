@@ -1,9 +1,12 @@
 import {data} from '../data'
+import {redirect} from 'next/navigation'
 
 export async function GET(
     _request: Request,
     {params} : {params: {id: string}}
 ){
+    if(parseInt(params.id) > data.length) redirect('/names')
+
     const name = data.find(name => name.id === parseInt(params.id))
 
     return Response.json(name)
